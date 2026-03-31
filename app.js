@@ -275,3 +275,29 @@ async function getAllUsers() {
 
 getAllUsers();
 
+// Fetch posts for user 1
+
+async function getUserPosts() {
+
+    try {
+
+        const response = await fetch("https://jsonplaceholder.typicode.com/users/1/posts");
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+
+        const posts = await response.json();
+
+        console.log("User posts:", posts);
+
+    } catch (error) {
+
+        console.error("Error:", error);
+
+    }
+
+}
+
+getUserPosts();
+
