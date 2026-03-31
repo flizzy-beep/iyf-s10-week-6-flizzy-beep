@@ -91,3 +91,87 @@ getUserData(1, (user) => {
     });
 
 });
+// Task 11.3 — Promises Version
+
+function getUserDataPromise(userId) {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+
+            console.log("Fetched user data (Promise)");
+
+            resolve({
+                id: userId,
+                name: "Fabby"
+            });
+
+        }, 1000);
+
+    });
+
+}
+
+function getUserPostsPromise(userId) {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+
+            console.log("Fetched user posts (Promise)");
+
+            resolve([
+                "Post 1",
+                "Post 2",
+                "Post 3"
+            ]);
+
+        }, 1000);
+
+    });
+
+}
+
+function getPostCommentsPromise(post) {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+
+            console.log("Fetched comments for", post);
+
+            resolve([
+                "Nice post!",
+                "Great work!"
+            ]);
+
+        }, 1000);
+
+    });
+
+}
+
+
+// Using Promise chaining
+
+getUserDataPromise(1)
+.then(user => {
+
+    return getUserPostsPromise(user.id);
+
+})
+.then(posts => {
+
+    return getPostCommentsPromise(posts[0]);
+
+})
+.then(comments => {
+
+    console.log("Comments:", comments);
+
+})
+.catch(error => {
+
+    console.log("Error:", error);
+
+});
