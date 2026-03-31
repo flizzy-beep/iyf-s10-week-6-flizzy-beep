@@ -175,3 +175,27 @@ getUserDataPromise(1)
     console.log("Error:", error);
 
 });
+// Task 11.4 — Async / Await
+
+async function fetchUserData() {
+
+    try {
+
+        const user = await getUserDataPromise(1);
+        console.log("User:", user);
+
+        const posts = await getUserPostsPromise(user.id);
+        console.log("Posts:", posts);
+
+        const comments = await getPostCommentsPromise(posts[0]);
+        console.log("Comments:", comments);
+
+    } catch (error) {
+
+        console.log("Error:", error);
+
+    }
+
+}
+
+fetchUserData();
