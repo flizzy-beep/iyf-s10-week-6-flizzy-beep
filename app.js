@@ -368,3 +368,55 @@ function displayUsers(users) {
 
 }
 loadUsers();
+const form = document.getElementById("post-form");
+const resultDiv = document.getElementById("post-result");
+async function createPost(title, body, userId) {
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            title,
+            body,
+            userId
+        })
+
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to create post");
+    }
+
+    return response.json();
+}
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const body = document.getElementById("body").value;
+    const userId = document.getElementById("userId").value;
+
+    try {
+
+        const newPost = await createPost(title, body, userId);
+
+        resultDiv.innerHTML = `
+            <h3>Post Created!</h3>
+            <p>ID: ${newPost.id}</p>
+            <p>Title: ${newPost.title}</p>
+            <p>${newPost.body}</p>
+        `;
+
+    } catch (error) {
+
+        resultDiv.innerHTML = "Error creating post";
+
+    }
+
+});
