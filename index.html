@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+
+.hidden {
+    display: none;
+}
+
+.user-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+</style>
 <title>Week 11 Async JavaScript</title>
 </head>
 <body>
 
-<h1>Async JavaScript Practice</h1>
+<div id="app">
+    <h1>User Directory</h1>
+
+    <div id="loading">Loading...</div>
+
+    <div id="error" class="hidden"></div>
+
+    <div id="users-container"></div>
+</div>
 
 <script src="app.js"></script>
 
