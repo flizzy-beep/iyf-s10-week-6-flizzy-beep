@@ -2,7 +2,7 @@
 # Week 11: Async JavaScript & APIs
 
 ## Author
-Name: kris  
+Name: christiano silali
 GitHub: https://github.com/flizzy-beep  
 Date: March 25th 2026
 
