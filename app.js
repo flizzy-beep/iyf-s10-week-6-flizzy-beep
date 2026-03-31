@@ -199,3 +199,26 @@ async function fetchUserData() {
 }
 
 fetchUserData();
+
+// Task 12.1 — Fetch API Basics
+
+fetch("https://jsonplaceholder.typicode.com/users/1")
+.then(response => {
+
+    console.log("Response object:", response);
+    console.log("Status:", response.status);
+    console.log("OK:", response.ok);
+
+    return response.json();
+
+})
+.then(data => {
+
+    console.log("User data:", data);
+
+})
+.catch(error => {
+
+    console.error("Fetch error:", error);
+
+});
