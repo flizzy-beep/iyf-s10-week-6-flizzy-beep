@@ -31,3 +31,63 @@ function loadUser(userId, callback) {
 loadUser(1, function(user){
     console.log("Loaded user:", user);
 });
+// Task 11.2 — Callback Hell Example
+
+function getUserData(userId, callback) {
+
+    setTimeout(() => {
+        console.log("Fetched user data");
+
+        callback({
+            id: userId,
+            name: "Fabby"
+        });
+
+    }, 1000);
+}
+
+function getUserPosts(userId, callback) {
+
+    setTimeout(() => {
+        console.log("Fetched user posts");
+
+        callback([
+            "Post 1",
+            "Post 2",
+            "Post 3"
+        ]);
+
+    }, 1000);
+}
+
+function getPostComments(post, callback) {
+
+    setTimeout(() => {
+        console.log("Fetched comments for", post);
+
+        callback([
+            "Nice post!",
+            "Great work!"
+        ]);
+
+    }, 1000);
+}
+
+
+// CALLBACK HELL
+
+getUserData(1, (user) => {
+
+    getUserPosts(user.id, (posts) => {
+
+        getPostComments(posts[0], (comments) => {
+
+            console.log("User:", user);
+            console.log("Posts:", posts);
+            console.log("Comments:", comments);
+
+        });
+
+    });
+
+});
